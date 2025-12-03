@@ -56,8 +56,6 @@ feature_groups:
         dtype: float
       - name: total_reviews
         dtype: int
-      - name: avg_helpful_ratio
-        dtype: float
       - name: avg_text_length
         dtype: float
       - name: sentiment_score

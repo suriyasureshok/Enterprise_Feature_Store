@@ -301,3 +301,15 @@ This will read raw data → compute all features → store parquet.
 ### **5. Start setting up Redis for Online Store**
 
 (You can run locally using Docker.)
+
+## Current task:
+Phase 2 — Feature Store Layer
+
+- Task 1 – Define Feature Groups → You already completed this just before
+- Task 2 – Implement Feature Definitions ← We are here
+- Task 3 – Build offline feature pipeline
+- Task 4 – Build online feature pipeline (Redis)
+- Task 5 – Unified feature serving API
+- Task 6 – Training pipeline
+- Task 7 – Inference pipeline
+- Task 8 – Monitoring + validation
