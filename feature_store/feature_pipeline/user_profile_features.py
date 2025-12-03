@@ -37,11 +37,12 @@ def build_user_profile_features(user_df: pd.DataFrame) -> pd.DataFrame:
     # Handle missing values
     profile_features['age'].fillna(profile_features['age'].median(), inplace=True)
     profile_features['income'].fillna(profile_features['income'].median(), inplace=True)
-    profile_features['education'].fillna('Unknown', inplace=True)
-    profile_features['location'].fillna('Unknown', inplace=True)
 
-    # Encode categorical variables
-    profile_features = pd.get_dummies(profile_features, columns=['gender', 'location', 'education', 'loyalty_status', 'device'], drop_first=True)
+    for col in ['gender', 'location', 'education', 'loyalty_status', 'device']:
+        profile_features[col].fillna('Unknown', inplace=True)
+
+    profile_features['account_age_days'].fillna(0, inplace=True)
+    profile_features['premium'].fillna(False, inplace=True)
 
     # -----------------------------
     # 2. Save Features
