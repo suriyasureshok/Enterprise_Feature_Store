@@ -1,0 +1,17 @@
+features:
+  - name: age
+    source: user_table
+    type: numeric
+    version: 1.0
+
+  - name: avg_purchase_amount_30d
+    source: event_logs
+    type: numeric
+    transformation: rolling mean 30 days
+    version: 1.0
+
+  - name: review_embedding
+    source: review_table
+    type: vector
+    model: sentence-transformer/all-MiniLM-L6-v2
+    version: 1.0
