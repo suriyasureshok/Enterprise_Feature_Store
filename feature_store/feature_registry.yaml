@@ -1,17 +1,78 @@
-features:
-  - name: age
-    source: user_table
-    type: numeric
-    version: 1.0
+feature_groups:
 
-  - name: avg_purchase_amount_30d
-    source: event_logs
-    type: numeric
-    transformation: rolling mean 30 days
-    version: 1.0
+  user_profile_features:
+    description: "Static demographic and profile attributes for each user."
+    keys: ["user_id"]
+    source: "user_table"
+    freshness: "30d"
+    features:
+      - name: age
+        dtype: int
+      - name: gender
+        dtype: categorical
+      - name: location
+        dtype: categorical
+      - name: income
+        dtype: float
+      - name: education
+        dtype: categorical
+      - name: loyalty_status
+        dtype: categorical
+      - name: account_age_days
+        dtype: int
+      - name: premium
+        dtype: bool
+      - name: device
+        dtype: categorical
 
-  - name: review_embedding
-    source: review_table
-    type: vector
-    model: sentence-transformer/all-MiniLM-L6-v2
-    version: 1.0
+  user_activity_features:
+    description: "Aggregated event-based behavioral ML features."
+    keys: ["user_id"]
+    source: "event_logs"
+    freshness: "1d"
+    features:
+      - name: total_events
+        dtype: int
+      - name: purchase_count
+        dtype: int
+      - name: add_to_cart_count
+        dtype: int
+      - name: session_count
+        dtype: int
+      - name: avg_session_length
+        dtype: float
+      - name: last_active_days
+        dtype: int
+      - name: categorical_event_vector
+        dtype: vector
+
+  user_review_features:
+    description: "NLP-derived features from user review history."
+    keys: ["user_id"]
+    source: "review_table"
+    freshness: "1d"
+    features:
+      - name: avg_rating
+        dtype: float
+      - name: total_reviews
+        dtype: int
+      - name: avg_helpful_ratio
+        dtype: float
+      - name: avg_text_length
+        dtype: float
+      - name: sentiment_score
+        dtype: float
+      - name: topic_vector
+        dtype: vector
+      - name: last_review_days
+        dtype: int
+
+  churn_label:
+    description: "Supervised label for churn prediction. Training only."
+    keys: ["user_id"]
+    source: "target_table"
+    freshness: "static"
+    features:
+      - name: churned
+        dtype: int
+
