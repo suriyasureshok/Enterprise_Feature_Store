@@ -1,3 +1,65 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name="Enterprise Feature Store"
-version="1.0.0"
+name = "enterprise-feature-store"
+version = "1.0.0"
+description = "A comprehensive feature store for enterprise machine learning applications"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+authors = [
+    {name = "Suriya Suresh", email = "suriyasureshkumarkannian@gmail.com"},
+]
+maintainers = [
+    {name = "Suriya Suresh", email = "suriyasureshkumarkannian@gmail.com"},
+]
+keywords = ["feature-store", "machine-learning", "data-engineering", "mlops"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "faker",
+    "matplotlib",
+    "seaborn",
+    "plotly",
+    "redis",
+    "ipykernel",
+    "nltk",
+    "sentence-transformers",
+    "pyarrow",
+    "pyplotlib>=0.0.56",
+]
+
+[project.urls]
+Homepage = "https://github.com/suriyasureshok/Enterprise_Feature_Store"
+Repository = "https://github.com/suriyasureshok/Enterprise_Feature_Store.git"
+Issues = "https://github.com/suriyasureshok/Enterprise_Feature_Store/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "COM", "C4", "DTZ", "T10", "DJ", "EM", "EXE", "FA", "ISC", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "FURB", "LOG", "RUF"]
+ignore = ["S101", "S104", "COM812", "ISC001"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"tests/**/*" = ["S101"]
