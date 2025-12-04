@@ -37,11 +37,13 @@ dependencies = [
     "seaborn",
     "plotly",
     "redis",
+    "fastapi",
     "ipykernel",
     "nltk",
     "sentence-transformers",
     "pyarrow",
     "pyplotlib>=0.0.56",
+    "fastapi>=0.123.8",
 ]
 
 [project.urls]
